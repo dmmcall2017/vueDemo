@@ -24,33 +24,39 @@
           </div>
       </div>
       <div class="content"></div>
-      <div class="footer">
-          
-      </div>
+      <Footer></Footer>
   </div>
 </template>
 
 <script>
-import Swiper from 'swiper'
-import 'swiper/dist/css/swiper.min.css'
-export default {
-  name: 'home',
-  data () {
-    return {
-      msg: 'Welcome to Your Vue.js App'
+    import Swiper from 'swiper'
+    import 'swiper/dist/css/swiper.min.css'
+    import Footer from '@/components/Footer'
+    export default {
+        name: 'home',
+        data () {
+            return {
+            msg: 'Welcome to Your Vue.js App'
+            }
+        },
+        mounted(){
+            new Swiper ('.swiper-container', {
+                loop: true,
+                autoplay: true
+            });
+            window.onscroll = function(){
+                // document.getElementsByTagName("el-row")[0].style.backgroundColor = "#f00"
+            } 
+        },
+        methods:{
+            login(){
+                this.$router.replace('/login')
+            }
+        },
+        components:{
+            Footer
+        }
     }
-  },
-  mounted(){
-    new Swiper ('.swiper-container', {
-        loop: true
-    })        
-  },
-  methods:{
-      login(){
-          this.$router.replace('/login')
-      }
-  }
-}
 </script>
 
 <!-- Add "scoped" attribute to limit CSS to this component only -->
@@ -84,5 +90,10 @@ export default {
     }
     .grid-content.bg-purple{
         position:relative;
+    }
+
+    .content{
+        height:1000px;
+        background: #0f0;
     }
 </style>
